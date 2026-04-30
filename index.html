@@ -16,357 +16,83 @@
       --mid: #4A4A4A;
       --border: #E0DAD0;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-    }
-
-    /* HERO */
-    .hero {
-      background: var(--blue);
-      color: white;
-      padding: 80px 40px 60px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -80px; left: -40px;
-      width: 300px; height: 300px;
-      border-radius: 50%;
-      background: rgba(239,159,39,0.08);
-    }
-
+    body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--dark); line-height: 1.6; }
+    .hero { background: var(--blue); color: white; padding: 80px 40px 60px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 400px; height: 400px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+    .hero::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 300px; height: 300px; border-radius: 50%; background: rgba(239,159,39,0.08); }
     .hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
-
-    .hero-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 5vw, 52px);
-      line-height: 1.15;
-      margin-bottom: 24px;
-      max-width: 750px;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: #A8C4E0;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      margin-bottom: 36px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.7);
-    }
-
+    .hero-label { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 20px; }
+    .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 5vw, 52px); line-height: 1.15; margin-bottom: 24px; max-width: 750px; }
+    .hero h1 em { font-style: italic; color: #A8C4E0; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 24px; margin-bottom: 36px; font-size: 14px; color: rgba(255,255,255,0.7); }
     .hero-meta span { display: flex; align-items: center; gap: 6px; }
-
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--amber);
-      color: var(--dark);
-    }
-
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: 500; text-decoration: none; transition: all 0.2s; border: none; }
+    .btn-primary { background: var(--amber); color: var(--dark); }
     .btn-primary:hover { background: #d4891f; transform: translateY(-1px); }
-
-    .btn-outline {
-      background: transparent;
-      color: white;
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-
+    .btn-outline { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
     .btn-outline:hover { background: rgba(255,255,255,0.08); }
-
-    /* STATS BAR */
-    .stats-bar {
-      background: white;
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
-    }
-
-    .stats-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-
-    .stat {
-      padding: 24px 20px;
-      border-right: 1px solid var(--border);
-      text-align: center;
-    }
-
+    .stats-bar { background: white; border-bottom: 1px solid var(--border); padding: 0 40px; }
+    .stats-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat { padding: 24px 20px; border-right: 1px solid var(--border); text-align: center; }
     .stat:last-child { border-right: none; }
-
-    .stat-val {
-      font-family: 'DM Serif Display', serif;
-      font-size: 28px;
-      color: var(--blue);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .stat-lbl {
-      font-size: 12px;
-      color: var(--mid);
-      line-height: 1.3;
-    }
-
-    /* MAIN */
+    .stat-val { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--blue); line-height: 1; margin-bottom: 4px; }
+    .stat-lbl { font-size: 12px; color: var(--mid); line-height: 1.3; }
     .main { max-width: 900px; margin: 0 auto; padding: 60px 40px; }
-
-    /* SUMMARY */
-    .summary {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 40px;
-      margin-bottom: 48px;
-      position: relative;
-    }
-
-    .summary::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 4px; height: 100%;
-      background: var(--blue);
-      border-radius: 12px 0 0 12px;
-    }
-
-    .summary-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 14px;
-    }
-
-    .summary p {
-      font-size: 15px;
-      color: var(--mid);
-      line-height: 1.75;
-    }
-
-    /* SECTION */
+    .summary { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 40px; margin-bottom: 48px; position: relative; }
+    .summary::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--blue); border-radius: 12px 0 0 12px; }
+    .summary-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+    .summary p { font-size: 15px; color: var(--mid); line-height: 1.75; }
     .section { margin-bottom: 48px; }
-
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 24px;
-      color: var(--dark);
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* AXES GRID */
-    .axes-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 32px;
-    }
-
-    .axis-card {
-      border-radius: 10px;
-      padding: 20px;
-      border: 1px solid transparent;
-    }
-
+    .section-title { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--dark); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .axes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+    .axis-card { border-radius: 10px; padding: 20px; border: 1px solid transparent; }
     .axis-card.blue { background: #EEF3FA; border-color: #C5D5EB; }
     .axis-card.coral { background: #FAECE7; border-color: #F0C4B4; }
     .axis-card.amber { background: #FEF3E2; border-color: #F5D9A0; }
     .axis-card.teal { background: #E6F4F1; border-color: #A8D5CB; }
-
-    .axis-name {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
+    .axis-name { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
     .axis-card.blue .axis-name { color: #1B3A6B; }
     .axis-card.coral .axis-name { color: #8B2500; }
     .axis-card.amber .axis-name { color: #7A4A00; }
     .axis-card.teal .axis-name { color: #0A4A38; }
-
-    .axis-markers {
-      font-size: 13px;
-      color: var(--mid);
-    }
-
-    /* FINDINGS */
-    .findings-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 12px;
-    }
-
-    .finding-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-    }
-
-    .finding-val {
-      font-family: 'DM Serif Display', serif;
-      font-size: 32px;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
+    .axis-markers { font-size: 13px; color: var(--mid); }
+    .fig-block { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+    .fig-header { padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--light); }
+    .fig-title { font-size: 13px; font-weight: 600; color: var(--dark); }
+    .fig-sub { font-size: 12px; color: var(--mid); margin-top: 2px; }
+    .fig-block img { width: 100%; display: block; padding: 16px; }
+    .findings-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .finding-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .finding-val { font-family: 'DM Serif Display', serif; font-size: 32px; line-height: 1; margin-bottom: 6px; }
     .finding-val.coral { color: var(--coral); }
     .finding-val.blue { color: var(--blue); }
     .finding-val.teal { color: var(--teal); }
-
-    .finding-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 4px;
-    }
-
+    .finding-label { font-size: 12px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
     .finding-desc { font-size: 12px; color: var(--mid); line-height: 1.45; }
-
-    /* KEY FINDING */
-    .key-finding {
-      background: var(--blue);
-      color: white;
-      border-radius: 12px;
-      padding: 32px 36px;
-      margin-bottom: 48px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .key-finding-pval {
-      font-family: 'DM Serif Display', serif;
-      font-size: 48px;
-      color: var(--amber);
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .key-finding-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
+    .key-finding { background: var(--blue); color: white; border-radius: 12px; padding: 32px 36px; margin-bottom: 48px; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
+    .key-finding-pval { font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--amber); line-height: 1; white-space: nowrap; }
+    .key-finding-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
     .key-finding-desc { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.55; }
-
-    /* LIMITATIONS */
-    .lim-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .lim-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--coral);
-      border-radius: 0 10px 10px 0;
-      padding: 16px 18px;
-    }
-
+    .lim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .lim-card { background: white; border: 1px solid var(--border); border-left: 3px solid var(--coral); border-radius: 0 10px 10px 0; padding: 16px 18px; }
     .lim-title { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
     .lim-desc { font-size: 12px; color: var(--mid); line-height: 1.5; }
-
-    /* FUTURE */
     .future-list { display: flex; flex-direction: column; gap: 10px; }
-
-    .future-item {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px 20px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
-    .future-num {
-      min-width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--teal);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 600;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
+    .future-item { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; display: flex; align-items: flex-start; gap: 14px; }
+    .future-num { min-width: 28px; height: 28px; border-radius: 50%; background: var(--teal); color: white; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex-shrink: 0; margin-top: 1px; }
     .future-text { font-size: 14px; color: var(--mid); line-height: 1.55; }
     .future-text strong { color: var(--dark); }
-
-    /* FOOTER */
-    footer {
-      background: var(--dark);
-      color: rgba(255,255,255,0.6);
-      padding: 40px;
-      text-align: center;
-      font-size: 13px;
-      line-height: 1.7;
-    }
-
+    .ref-list { display: flex; flex-direction: column; gap: 8px; }
+    .ref-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; background: white; border: 1px solid var(--border); border-radius: 8px; font-size: 12px; color: var(--mid); line-height: 1.5; }
+    .ref-num { min-width: 24px; height: 24px; border-radius: 50%; background: var(--light); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--blue); flex-shrink: 0; }
+    .ref-item a { color: var(--blue); text-decoration: none; }
+    .ref-item a:hover { text-decoration: underline; }
+    footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 40px; text-align: center; font-size: 13px; line-height: 1.7; }
     footer a { color: var(--amber); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
-
     .footer-inner { max-width: 900px; margin: 0 auto; }
-
     @media (max-width: 600px) {
       .axes-grid, .findings-grid, .lim-grid { grid-template-columns: 1fr; }
       .stats-inner { grid-template-columns: 1fr 1fr; }
@@ -378,14 +104,14 @@
 </head>
 <body>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-inner">
       <div class="hero-label">NUS · Department of Biomedical Engineering · FYP 2025/2026</div>
       <h1>Circulating Protein Biomarkers for <em>Ischaemic Stroke</em> Diagnosis</h1>
       <div class="hero-meta">
         <span>👤 Alrick Kok Zi Xin</span>
-        <span>🎓 Supervisors: Prof. Shao Hui Lin · Tan Hong Min</span>
+        <span>🎓 Supervisor: Prof. Shao Huilin</span>
+        <span>🔬 Mentor: Tan Hong Min</span>
         <span>📅 AY 2025/2026</span>
       </div>
       <div class="hero-actions">
@@ -395,82 +121,80 @@
     </div>
   </div>
 
-  <!-- STATS BAR -->
   <div class="stats-bar">
     <div class="stats-inner">
-      <div class="stat">
-        <div class="stat-val">30</div>
-        <div class="stat-lbl">Plasma samples<br>15 IS · 15 Controls</div>
-      </div>
-      <div class="stat">
-        <div class="stat-val">9</div>
-        <div class="stat-lbl">Biomarkers across<br>4 pathophysiological axes</div>
-      </div>
-      <div class="stat">
-        <div class="stat-val">0.724</div>
-        <div class="stat-lbl">Best AUC achieved<br>Gradient Boosting</div>
-      </div>
-      <div class="stat">
-        <div class="stat-val">0.800</div>
-        <div class="stat-lbl">GB Sensitivity<br>Clinically preferred</div>
-      </div>
+      <div class="stat"><div class="stat-val">30</div><div class="stat-lbl">Plasma samples<br>15 IS · 15 Controls</div></div>
+      <div class="stat"><div class="stat-val">9</div><div class="stat-lbl">Biomarkers across<br>4 pathophysiological axes</div></div>
+      <div class="stat"><div class="stat-val">0.724</div><div class="stat-lbl">Best AUC achieved<br>Gradient Boosting</div></div>
+      <div class="stat"><div class="stat-val">0.800</div><div class="stat-lbl">GB Sensitivity<br>Clinically preferred</div></div>
     </div>
   </div>
 
   <div class="main">
 
-    <!-- SUMMARY -->
     <div class="summary">
       <div class="summary-label">Abstract</div>
       <p>No diagnostic tool currently exists that is fast, accessible, and accurate enough to meaningfully accelerate ischaemic stroke triage before neuroimaging becomes available, despite biological signals entering systemic circulation within minutes of arterial occlusion. This study proposes a unified diagnostic pipeline in which biological knowledge, normalisation strategy, and machine learning validation are treated as explicitly interdependent rather than isolated choices, applied to a plasma protein panel quantified from 30 clinical samples. The findings demonstrate that a biologically informed and computationally integrated approach can extract meaningful and interpretable diagnostic signals from a small biomarker panel, directly validating the multi-biomarker panel design.</p>
     </div>
 
-    <!-- BIOMARKER FRAMEWORK -->
     <div class="section">
       <div class="section-title">Four-Axis Biomarker Framework</div>
+      <div class="fig-block">
+        <div class="fig-header">
+          <div class="fig-title">Figure 1 — Biological Framework of Biomarkers for Ischaemic Stroke</div>
+          <div class="fig-sub">Four-axis framework capturing distributed diagnostic signals across injury pathways</div>
+        </div>
+        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/Biological%20Framework%20of%20Biomarkers%20for%20Ischaemic%20Stroke%20-.png" alt="Biological Framework" onerror="this.style.display='none'">
+      </div>
       <div class="axes-grid">
-        <div class="axis-card blue">
-          <div class="axis-name">Neuroglial Injury</div>
-          <div class="axis-markers">GFAP · NfL · Tau13</div>
-        </div>
-        <div class="axis-card coral">
-          <div class="axis-name">Thrombosis & Haemostasis</div>
-          <div class="axis-markers">Fibrinogen · Fibronectin · α2M</div>
-        </div>
-        <div class="axis-card amber">
-          <div class="axis-name">Systemic Inflammation</div>
-          <div class="axis-markers">CRP</div>
-        </div>
-        <div class="axis-card teal">
-          <div class="axis-name">Cellular Activation & Signalling</div>
-          <div class="axis-markers">CD9 · CD63</div>
-        </div>
+        <div class="axis-card blue"><div class="axis-name">Neuroglial Injury</div><div class="axis-markers">GFAP · NfL · Tau13</div></div>
+        <div class="axis-card coral"><div class="axis-name">Thrombosis & Haemostasis</div><div class="axis-markers">Fibrinogen · Fibronectin · α2M</div></div>
+        <div class="axis-card amber"><div class="axis-name">Systemic Inflammation</div><div class="axis-markers">CRP</div></div>
+        <div class="axis-card teal"><div class="axis-name">Cellular Activation & Signalling</div><div class="axis-markers">CD9 · CD63</div></div>
       </div>
     </div>
 
-    <!-- KEY FINDINGS -->
     <div class="section">
-      <div class="section-title">Key Results</div>
-      <div class="findings-grid">
-        <div class="finding-card">
-          <div class="finding-val coral">0.724</div>
-          <div class="finding-label">GB AUC (LOOCV)</div>
-          <div class="finding-desc">Gradient Boosting outperforms Logistic Regression (0.613) — nonlinear discriminative structure confirmed</div>
+      <div class="section-title">Exploratory Data Analysis</div>
+      <div class="fig-block">
+        <div class="fig-header">
+          <div class="fig-title">Figure 3a — Patient-level Biomarker Heatmap</div>
+          <div class="fig-sub">Log-transformed + global min-max normalised · Stroke samples above black line · Healthy below</div>
         </div>
-        <div class="finding-card">
-          <div class="finding-val blue">0.800</div>
-          <div class="finding-label">GB Sensitivity</div>
-          <div class="finding-desc">Only 3 missed IS cases vs 7 for LR — GB preferred clinically for its sensitivity-prioritising error profile</div>
-        </div>
-        <div class="finding-card">
-          <div class="finding-val teal">0.722</div>
-          <div class="finding-label">RF AUC (LOOCV)</div>
-          <div class="finding-desc">Random Forest achieves most balanced trade-off — sensitivity 0.667, specificity 0.733</div>
-        </div>
+        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/heatmap%20poster.png" alt="Patient-level Biomarker Heatmap" onerror="this.style.display='none'">
       </div>
     </div>
 
-    <!-- MWU / ALPHA2M -->
+    <div class="section">
+      <div class="section-title">Machine Learning Results</div>
+      <div class="findings-grid" style="margin-bottom:16px">
+        <div class="finding-card"><div class="finding-val coral">0.724</div><div class="finding-label">GB AUC (LOOCV)</div><div class="finding-desc">Gradient Boosting outperforms LR (0.613) — nonlinear discriminative structure confirmed</div></div>
+        <div class="finding-card"><div class="finding-val blue">0.800</div><div class="finding-label">GB Sensitivity</div><div class="finding-desc">Only 3 missed IS cases vs 7 for LR — GB preferred clinically for sensitivity-prioritising error profile</div></div>
+        <div class="finding-card"><div class="finding-val teal">0.722</div><div class="finding-label">RF AUC (LOOCV)</div><div class="finding-desc">Random Forest achieves most balanced trade-off — sensitivity 0.667, specificity 0.733</div></div>
+      </div>
+      <div class="fig-block">
+        <div class="fig-header">
+          <div class="fig-title">Figure 4a — Confusion Matrices (LOOCV)</div>
+          <div class="fig-sub">Logistic Regression · Random Forest · Gradient Boosting</div>
+        </div>
+        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/Confusion%20matrix.png" alt="Confusion Matrices" onerror="this.style.display='none'">
+      </div>
+      <div class="fig-block">
+        <div class="fig-header">
+          <div class="fig-title">Figure 4c — ROC Curves (LOOCV)</div>
+          <div class="fig-sub">Dashed diagonal represents random chance</div>
+        </div>
+        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/ROC%20Poster.png" alt="ROC Curves" onerror="this.style.display='none'">
+      </div>
+      <div class="fig-block">
+        <div class="fig-header">
+          <div class="fig-title">Figure 5a — Feature Importance (LOOCV Training Folds)</div>
+          <div class="fig-sub">Permutation importance · normalised across all 9 biomarkers · yellow = top 3 per model</div>
+        </div>
+        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/Feature%20Selection%20LOOCV%20training%20folds.png" alt="Feature Importance" onerror="this.style.display='none'">
+      </div>
+    </div>
+
     <div class="key-finding">
       <div class="key-finding-pval">p = 0.011</div>
       <div>
@@ -479,55 +203,86 @@
       </div>
     </div>
 
-    <!-- LIMITATIONS -->
     <div class="section">
       <div class="section-title">Limitations</div>
       <div class="lim-grid">
-        <div class="lim-card">
-          <div class="lim-title">Sample Size</div>
-          <div class="lim-desc">n=30 — proof-of-concept scale only. LOOCV confidence intervals wide and overlapping; reliable AUC estimation requires 50–100 observations per class.</div>
-        </div>
-        <div class="lim-card">
-          <div class="lim-title">Missing Metadata</div>
-          <div class="lim-desc">No age, sex, comorbidity or onset-to-draw interval data — α2M prominence may partly reflect demographic imbalance rather than IS-specific biology.</div>
-        </div>
-        <div class="lim-card">
-          <div class="lim-title">Assay Platform</div>
-          <div class="lim-desc">SNR normalisation produces relative not absolute values — cannot map to published reference ranges or define clinically actionable thresholds.</div>
-        </div>
-        <div class="lim-card">
-          <div class="lim-title">No External Validation</div>
-          <div class="lim-desc">LOOCV cannot substitute for multisite evaluation across different clinical sites, collection protocols, or heterogeneous patient populations.</div>
-        </div>
+        <div class="lim-card"><div class="lim-title">Sample Size</div><div class="lim-desc">n=30 — proof-of-concept scale only. LOOCV confidence intervals wide and overlapping; reliable AUC estimation requires 50–100 observations per class.</div></div>
+        <div class="lim-card"><div class="lim-title">Missing Metadata</div><div class="lim-desc">No age, sex, comorbidity or onset-to-draw interval data — α2M prominence may partly reflect demographic imbalance rather than IS-specific biology.</div></div>
+        <div class="lim-card"><div class="lim-title">Assay Platform</div><div class="lim-desc">SNR normalisation produces relative not absolute values — cannot map to published reference ranges or define clinically actionable thresholds.</div></div>
+        <div class="lim-card"><div class="lim-title">No External Validation</div><div class="lim-desc">LOOCV cannot substitute for multisite evaluation across different clinical sites, collection protocols, or heterogeneous patient populations.</div></div>
       </div>
     </div>
 
-    <!-- FUTURE WORK -->
     <div class="section">
       <div class="section-title">Future Work</div>
       <div class="future-list">
-        <div class="future-item">
-          <div class="future-num">1</div>
-          <div class="future-text"><strong>Expand cohort to ≥150</strong> with standardised demographic & clinical metadata; replace LOOCV with conventional train/test split to reduce optimistic bias</div>
-        </div>
-        <div class="future-item">
-          <div class="future-num">2</div>
-          <div class="future-text"><strong>Enrich discriminative axes</strong> — add MMP-9, S100B, D-dimer, vWF, IL-6; adopt multiplex platform to reduce inter-assay variability</div>
-        </div>
-        <div class="future-item">
-          <div class="future-num">3</div>
-          <div class="future-text"><strong>Validate against haemorrhagic stroke & TIA</strong> comparators in an independent multisite cohort before clinical translation</div>
-        </div>
+        <div class="future-item"><div class="future-num">1</div><div class="future-text"><strong>Expand cohort to ≥150</strong> with standardised demographic & clinical metadata; replace LOOCV with conventional train/test split to reduce optimistic bias</div></div>
+        <div class="future-item"><div class="future-num">2</div><div class="future-text"><strong>Enrich discriminative axes</strong> — add MMP-9, S100B, D-dimer, vWF, IL-6; adopt multiplex platform to reduce inter-assay variability</div></div>
+        <div class="future-item"><div class="future-num">3</div><div class="future-text"><strong>Validate against haemorrhagic stroke & TIA</strong> comparators in an independent multisite cohort before clinical translation</div></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">References</div>
+      <div class="ref-list">
+        <div class="ref-item"><div class="ref-num">1</div><div>Saver, J. L. (2005). Time is Brain—Quantified. <em>Stroke</em>, 37(1), 263–266. <a href="https://doi.org/10.1161/01.str.0000196957.55928.ab" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">2</div><div>Liu, J., et al. (2025). Epidemiology and Future Trend Predictions of Ischemic Stroke. <em>Commun. Med.</em>, 5(1). <a href="https://doi.org/10.1038/s43856-025-00939-y" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">3</div><div>Tsao, C. W., et al. (2023). Heart Disease and Stroke Statistics—2023 Update. <em>Circulation</em>, 147(8), e93–e621. <a href="https://doi.org/10.1161/cir.0000000000001123" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">4</div><div>Zhou, J., et al. (2023). Health Utility Values Among Patients With Ischemic Stroke. <em>Front. Neurol.</em>, 14, 1219679. <a href="https://doi.org/10.3389/fneur.2023.1219679" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">5</div><div>Yeoh, Y. S., et al. (2019). Health-Related Quality of Life Loss Associated With First-Time Stroke. <em>PLoS ONE</em>, 14(1), e0211493. <a href="https://doi.org/10.1371/journal.pone.0211493" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">6</div><div>Wang, Y., et al. (2021). Burden of Informal Care in Stroke Survivors. <em>BMC Public Health</em>, 21(1), 1945. <a href="https://doi.org/10.1186/s12889-021-11991-3" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">7</div><div>Feigin, V. L., et al. (2024). World Stroke Organization: Global Stroke Fact Sheet 2025. <em>Int. J. Stroke</em>, 20(2), 132–144. <a href="https://doi.org/10.1177/17474930241308142" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">8</div><div>Ministry of Health. (2024). Principal Causes of Death. <a href="https://www.healthhub.sg/support-and-tools/statistics-on-healthcare/principal-causes-of-death" target="_blank">Link</a></div></div>
+        <div class="ref-item"><div class="ref-num">9</div><div>Majumder, D. (2024). Ischemic Stroke: Pathophysiology and Evolving Treatment Approaches. <em>Neurosci. Insights</em>, 19. <a href="https://doi.org/10.1177/26331055241292600" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">10</div><div>Xie, Y., et al. (2024). Effects of Extracellular Vesicles for Ischemic Stroke. <em>Exp. Ther. Med.</em>, 28(1), 287. <a href="https://doi.org/10.3892/etm.2024.12575" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">11</div><div>Günkan, A., et al. (2025). Thrombolysis for Ischemic Stroke Beyond the 4.5-Hour Window. <em>Stroke</em>, 56(3), 580–590. <a href="https://doi.org/10.1161/strokeaha.124.048536" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">12</div><div>Chen, X., et al. (2022). Comparing FAST and BEFAST in Acute Stroke Patients. <em>Front. Neurol.</em>, 12, 765069. <a href="https://doi.org/10.3389/fneur.2021.765069" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">13</div><div>Whiteley, W., Tseng, M., & Sandercock, P. (2008). Blood Biomarkers in the Diagnosis of Ischemic Stroke. <em>Stroke</em>, 39(10), 2902–2909. <a href="https://doi.org/10.1161/strokeaha.107.511261" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">14</div><div>Martínez-Sánchez, P., et al. (2014). Biochemical and Inflammatory Biomarkers in Ischemic Stroke. <em>J. Transl. Med.</em>, 12(1), 220. <a href="https://doi.org/10.1186/s12967-014-0220-3" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">15</div><div>Felekkis, K., & Papaneophytou, C. (2024). The Circulating Biomarkers League. <em>Int. J. Mol. Sci.</em>, 25(6), 3403. <a href="https://doi.org/10.3390/ijms25063403" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">16</div><div>Gerdanovics, A., et al. (2025). Determinants of Outcome Variability in Ischemic Stroke. <em>Antioxidants</em>, 14(11), 1305. <a href="https://doi.org/10.3390/antiox14111305" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">17</div><div>Jickling, G. C., & Sharp, F. R. (2015). Biomarker Panels in Ischemic Stroke. <em>Stroke</em>, 46(3), 915–920. <a href="https://doi.org/10.1161/strokeaha.114.005604" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">18</div><div>Zhang, J., et al. (2022). New Strategy for Clinical Etiologic Diagnosis of Acute Ischemic Stroke. <em>RSC Adv.</em>, 12(23), 14716–14723. <a href="https://doi.org/10.1039/d2ra02022j" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">19</div><div>Yoo, H. Y., et al. (2025). Machine Learning for Predicting Stroke Risk Stratification. <em>J. Med. Internet Res.</em>, 28, e85654. <a href="https://doi.org/10.2196/85654" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">20</div><div>Ruksakulpiwat, S., et al. (2024). Accuracy of Blood Biomarkers for the Diagnosis of Ischemic Stroke. <em>eNeuro</em>, 11(11). <a href="https://doi.org/10.1523/eneuro.0302-24.2024" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">21</div><div>Liggett, W. (2006). Normalization and Technical Variation in Gene Expression Measurements. <em>J. Res. Natl. Inst. Stand. Technol.</em>, 111(5), 361. <a href="https://doi.org/10.6028/jres.111.026" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">22</div><div>Cabrera-Garcia, D., et al. (2022). Plasma Biomarkers Associated With Survival and Thrombosis in COVID-19. <em>Int. J. Hematol.</em>, 116(6), 937–946. <a href="https://doi.org/10.1007/s12185-022-03437-2" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">23</div><div>Lagrange, J., et al. (2022). Alpha-2-Macroglobulin in Hemostasis and Thrombosis. <em>J. Thromb. Haemost.</em>, 20(4), 806–815. <a href="https://doi.org/10.1111/jth.15647" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">24</div><div>Spiegelenberg, J., et al. (2023). Hemostasis Biomarkers and Long-Term Risk of Recurrent Cardiovascular Events. <em>Blood</em>, 142(Suppl. 1), 2645. <a href="https://doi.org/10.1182/blood-2023-187152" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">25</div><div>Ferrari, F., et al. (2023). Quantification and Prospective Evaluation of Serum NfL and GFAP. <em>J. Cereb. Blood Flow Metab.</em>, 43(9), 1601–1611. <a href="https://doi.org/10.1177/0271678x231172520" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">26</div><div>Saez-Calveras, N., et al. (2024). Plasma GFAP as a Biomarker of Acute Focal Brain Injury. <em>Brain Commun.</em>, 7(1), fcaf054. <a href="https://doi.org/10.1093/braincomms/fcaf054" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">27</div><div>Sigström, R., et al. (2024). Blood Biomarkers of Neuronal Injury and Astrocytic Reactivity. <em>Mol. Psychiatry</em>, 30(4), 1601–1609. <a href="https://doi.org/10.1038/s41380-024-02774-4" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">28</div><div>Bian, J., et al. (2023). CRP as a Potential Predictor of Outcome in Acute Ischemic Stroke. <em>Biomed. Rep.</em>, 18(2), 17. <a href="https://doi.org/10.3892/br.2023.1599" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">29</div><div>Matsuo, R., et al. (2016). Plasma C-Reactive Protein and Clinical Outcomes After Acute Ischemic Stroke. <em>PLoS ONE</em>, 11(6), e0156790. <a href="https://doi.org/10.1371/journal.pone.0156790" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">30</div><div>Hong, S., et al. (2018). Potential of Exosomes for the Treatment of Stroke. <em>Cell Transplant.</em>, 28(6), 662–670. <a href="https://doi.org/10.1177/0963689718816990" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">31</div><div>Shimomura, R., et al. (2017). Alpha-2-Macroglobulin as a Promising Biological Marker of Endothelial Function. <em>J. Atheroscler. Thromb.</em>, 25(4), 350–358. <a href="https://doi.org/10.5551/jat.41335" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">32</div><div>Lakhan, S. E., et al. (2013). Matrix Metalloproteinases and Blood-Brain Barrier Disruption. <em>Front. Neurol.</em>, 4, 32. <a href="https://doi.org/10.3389/fneur.2013.00032" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">33</div><div>Nezu, T., et al. (2013). Alpha2-Macroglobulin as a Promising Biomarker for Cerebral Small Vessel Disease. <em>J. Neurol.</em>, 260(10), 2642–2649. <a href="https://doi.org/10.1007/s00415-013-7040-x" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">34</div><div>Yılmaz, B. Ö., & Şencan, R. (2025). The Effect of Fibrinogen Levels on Neurological Recovery. <em>Sci. Rep.</em>, 15(1), 12644. <a href="https://doi.org/10.1038/s41598-025-91611-x" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">35</div><div>Okada, T., et al. (2020). The Stroke-Induced Blood-Brain Barrier Disruption. <em>Curr. Neuropharmacol.</em>, 18(12), 1187–1212. <a href="https://doi.org/10.2174/1570159x18666200528143301" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">36</div><div>Nielsen, H. H., et al. (2020). Acute Neurofilament Light Chain Plasma Levels Correlate With Stroke Severity. <em>Front. Neurol.</em>, 11, 448. <a href="https://doi.org/10.3389/fneur.2020.00448" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">37</div><div>Tony, A. A., et al. (2025). Neurofilament Light Chain Correlates With Stroke Severity. <em>Cell. Mol. Neurobiol.</em>, 45(1), 39. <a href="https://doi.org/10.1007/s10571-025-01552-2" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">38</div><div>Lee, J., et al. (2025). Emerging Biomarkers in Ischemic Stroke. <em>Vessel Plus</em>, 9. <a href="https://doi.org/10.20517/2574-1209.2025.58" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">39</div><div>Holper, S., Watson, R., & Yassi, N. (2022). Tau as a Biomarker of Neurodegeneration. <em>Int. J. Mol. Sci.</em>, 23(13), 7307. <a href="https://doi.org/10.3390/ijms23137307" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">40</div><div>Zhang, F., et al. (2009). Tetraspanins and Vascular Functions. <em>Cardiovasc. Res.</em>, 83(1), 7–15. <a href="https://doi.org/10.1093/cvr/cvp080" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">41</div><div>Hong, S., et al. (2021). C-Reactive Protein for Stroke Detection in the Emergency Department. <em>Front. Neurol.</em>, 12, 662510. <a href="https://doi.org/10.3389/fneur.2021.662510" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">42</div><div>Yu, H., et al. (2016). High-Sensitivity C-Reactive Protein in Stroke Patients. <em>J. Clin. Neurosci.</em>, 36, 12–19. <a href="https://doi.org/10.1016/j.jocn.2016.10.020" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">43</div><div>Misra, S., et al. (2026). Cross-Platform Proteomics and Machine Learning for Stroke Diagnosis. <em>J. Am. Heart Assoc.</em>, 15(6), e048249. <a href="https://doi.org/10.1161/jaha.125.048249" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">44</div><div>Penn, A. M., et al. (2018). Differential Proteomics for Distinguishing Ischemic Stroke From Controls. <em>Transl. Stroke Res.</em>, 9(6), 590–599. <a href="https://doi.org/10.1007/s12975-018-0609-z" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">45</div><div>Augello, C. J., et al. (2018). Identification of Novel Blood Biomarker Panels to Detect Ischemic Stroke. <em>Brain Res.</em>, 1698, 161–169. <a href="https://doi.org/10.1016/j.brainres.2018.08.012" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">46</div><div>Ganti, L., et al. (2025). S-100B in Acute Ischemic Stroke. <em>Int. J. Emerg. Med.</em>, 18. <a href="https://doi.org/10.1186/s12245-025-01007-x" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">47</div><div>He, Z., et al. (2014). Plasma D-Dimer Levels Are Associated With Stroke Subtypes. <em>PLoS ONE</em>, 9(1), e86277. <a href="https://doi.org/10.1371/journal.pone.0086277" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">48</div><div>Ismail, M., et al. (2024). Role of Von Willebrand Factor as a Biomarker in Acute Ischemic Stroke. <em>Egypt. J. Neurol. Psychiatr. Neurosurg.</em>, 60, 71. <a href="https://doi.org/10.1186/s41983-024-00837-5" target="_blank">DOI</a></div></div>
+        <div class="ref-item"><div class="ref-num">49</div><div>Oommen, A. M., et al. (2025). Circulating Interleukin-6 Levels and Timing of Acute Ischemic Stroke Onset. <em>J. Am. Heart Assoc.</em> <a href="https://doi.org/10.1161/JAHA.124.040878" target="_blank">DOI</a></div></div>
       </div>
     </div>
 
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
       <p><strong style="color:white">Alrick Kok Zi Xin</strong> · Department of Biomedical Engineering · National University of Singapore</p>
-      <p>Supervisors: Prof. Shao Hui Lin · Tan Hong Min · AY 2025/2026</p>
+      <p>Supervisor: Prof. Shao Huilin · Mentor: Tan Hong Min · AY 2025/2026</p>
       <p style="margin-top:12px">
         <a href="https://github.com/thyamklasic/FYP-IS-Biomarkers/blob/main/A0253027M_FYP.pdf" target="_blank">Download Full Thesis</a>
         &nbsp;·&nbsp;
