@@ -46,31 +46,55 @@
     .summary p { font-size: 15px; color: var(--mid); line-height: 1.75; }
     .section { margin-bottom: 48px; }
     .section-title { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--dark); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-    .axes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
-    .axis-card { border-radius: 10px; padding: 20px; border: 1px solid transparent; }
-    .axis-card.blue { background: #EEF3FA; border-color: #C5D5EB; }
-    .axis-card.coral { background: #FAECE7; border-color: #F0C4B4; }
-    .axis-card.amber { background: #FEF3E2; border-color: #F5D9A0; }
-    .axis-card.teal { background: #E6F4F1; border-color: #A8D5CB; }
-    .axis-name { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
-    .axis-card.blue .axis-name { color: #1B3A6B; }
-    .axis-card.coral .axis-name { color: #8B2500; }
-    .axis-card.amber .axis-name { color: #7A4A00; }
-    .axis-card.teal .axis-name { color: #0A4A38; }
-    .axis-markers { font-size: 13px; color: var(--mid); }
     .fig-block { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
     .fig-header { padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--light); }
     .fig-title { font-size: 13px; font-weight: 600; color: var(--dark); }
     .fig-sub { font-size: 12px; color: var(--mid); margin-top: 2px; }
-    .fig-block img { width: 100%; display: block; padding: 16px; }
-    .findings-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-    .finding-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
-    .finding-val { font-family: 'DM Serif Display', serif; font-size: 32px; line-height: 1; margin-bottom: 6px; }
-    .finding-val.coral { color: var(--coral); }
-    .finding-val.blue { color: var(--blue); }
-    .finding-val.teal { color: var(--teal); }
-    .finding-label { font-size: 12px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
-    .finding-desc { font-size: 12px; color: var(--mid); line-height: 1.45; }
+    .fig-block img { width: 100%; display: block; padding: 16px; cursor: zoom-in; transition: opacity 0.2s; }
+    .fig-block img:hover { opacity: 0.88; }
+    .fig-tap-hint { text-align: center; font-size: 11px; color: var(--mid); padding: 0 16px 12px; }
+    /* LIGHTBOX */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.93);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      cursor: zoom-out;
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-overlay img {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+      object-fit: contain;
+      cursor: default;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 16px; right: 20px;
+      color: white;
+      font-size: 36px;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+      z-index: 10000;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-caption {
+      position: fixed;
+      bottom: 20px;
+      left: 0; right: 0;
+      text-align: center;
+      color: rgba(255,255,255,0.65);
+      font-size: 13px;
+      pointer-events: none;
+    }
     .key-finding { background: var(--blue); color: white; border-radius: 12px; padding: 32px 36px; margin-bottom: 48px; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
     .key-finding-pval { font-family: 'DM Serif Display', serif; font-size: 48px; color: var(--amber); line-height: 1; white-space: nowrap; }
     .key-finding-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
@@ -94,15 +118,23 @@
     footer a:hover { text-decoration: underline; }
     .footer-inner { max-width: 900px; margin: 0 auto; }
     @media (max-width: 600px) {
-      .axes-grid, .findings-grid, .lim-grid { grid-template-columns: 1fr; }
+      .lim-grid { grid-template-columns: 1fr; }
       .stats-inner { grid-template-columns: 1fr 1fr; }
       .key-finding { grid-template-columns: 1fr; text-align: center; }
       .hero { padding: 60px 24px 40px; }
       .main { padding: 40px 24px; }
+      .stat { padding: 16px 10px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
 
   <div class="hero">
     <div class="hero-inner">
@@ -116,7 +148,7 @@
       </div>
       <div class="hero-actions">
         <a href="https://github.com/thyamklasic/FYP-IS-Biomarkers/blob/main/A0253027M_FYP.pdf" class="btn btn-primary" target="_blank">📄 Download Full Thesis</a>
-        <a href="https://github.com/thyamklasic/FYP-IS-Biomarkers" class="btn btn-outline" target="_blank">💻 View Repository</a>
+
       </div>
     </div>
   </div>
@@ -144,13 +176,8 @@
           <div class="fig-title">Figure 1 — Biological Framework of Biomarkers for Ischaemic Stroke</div>
           <div class="fig-sub">Four-axis framework capturing distributed diagnostic signals across injury pathways</div>
         </div>
-        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/Biological%20Framework%20of%20Biomarkers%20for%20Ischaemic%20Stroke%20-.png" alt="Biological Framework" onerror="this.style.display='none'">
-      </div>
-      <div class="axes-grid">
-        <div class="axis-card blue"><div class="axis-name">Neuroglial Injury</div><div class="axis-markers">GFAP · NfL · Tau13</div></div>
-        <div class="axis-card coral"><div class="axis-name">Thrombosis & Haemostasis</div><div class="axis-markers">Fibrinogen · Fibronectin · α2M</div></div>
-        <div class="axis-card amber"><div class="axis-name">Systemic Inflammation</div><div class="axis-markers">CRP</div></div>
-        <div class="axis-card teal"><div class="axis-name">Cellular Activation & Signalling</div><div class="axis-markers">CD9 · CD63</div></div>
+        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/Biological%20Framework%20of%20Biomarkers%20for%20Ischaemic%20Stroke%20-.png" alt="Biological Framework" onclick="openLightbox(this)" onerror="this.style.display='none'">
+        <div class="fig-tap-hint">🔍 Tap to expand</div>
       </div>
     </div>
 
@@ -161,37 +188,36 @@
           <div class="fig-title">Figure 3a — Patient-level Biomarker Heatmap</div>
           <div class="fig-sub">Log-transformed + global min-max normalised · Stroke samples above black line · Healthy below</div>
         </div>
-        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/heatmap%20poster.png" alt="Patient-level Biomarker Heatmap" onerror="this.style.display='none'">
+        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/heatmap%20poster.png" alt="Patient-level Biomarker Heatmap" onclick="openLightbox(this)" onerror="this.style.display='none'">
+        <div class="fig-tap-hint">🔍 Tap to expand</div>
       </div>
     </div>
 
     <div class="section">
       <div class="section-title">Machine Learning Results</div>
-      <div class="findings-grid" style="margin-bottom:16px">
-        <div class="finding-card"><div class="finding-val coral">0.724</div><div class="finding-label">GB AUC (LOOCV)</div><div class="finding-desc">Gradient Boosting outperforms LR (0.613) — nonlinear discriminative structure confirmed</div></div>
-        <div class="finding-card"><div class="finding-val blue">0.800</div><div class="finding-label">GB Sensitivity</div><div class="finding-desc">Only 3 missed IS cases vs 7 for LR — GB preferred clinically for sensitivity-prioritising error profile</div></div>
-        <div class="finding-card"><div class="finding-val teal">0.722</div><div class="finding-label">RF AUC (LOOCV)</div><div class="finding-desc">Random Forest achieves most balanced trade-off — sensitivity 0.667, specificity 0.733</div></div>
-      </div>
       <div class="fig-block">
         <div class="fig-header">
           <div class="fig-title">Figure 4a — Confusion Matrices (LOOCV)</div>
           <div class="fig-sub">Logistic Regression · Random Forest · Gradient Boosting</div>
         </div>
-        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/Confusion%20matrix.png" alt="Confusion Matrices" onerror="this.style.display='none'">
+        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/Confusion%20matrix.png" alt="Confusion Matrices" onclick="openLightbox(this)" onerror="this.style.display='none'">
+        <div class="fig-tap-hint">🔍 Tap to expand</div>
       </div>
       <div class="fig-block">
         <div class="fig-header">
           <div class="fig-title">Figure 4c — ROC Curves (LOOCV)</div>
           <div class="fig-sub">Dashed diagonal represents random chance</div>
         </div>
-        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/ROC%20Poster.png" alt="ROC Curves" onerror="this.style.display='none'">
+        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/ROC%20Poster.png" alt="ROC Curves" onclick="openLightbox(this)" onerror="this.style.display='none'">
+        <div class="fig-tap-hint">🔍 Tap to expand</div>
       </div>
       <div class="fig-block">
         <div class="fig-header">
           <div class="fig-title">Figure 5a — Feature Importance (LOOCV Training Folds)</div>
           <div class="fig-sub">Permutation importance · normalised across all 9 biomarkers · yellow = top 3 per model</div>
         </div>
-        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/Feature%20Selection%20LOOCV%20training%20folds.png" alt="Feature Importance" onerror="this.style.display='none'">
+        <img src="https://raw.githubusercontent.com/thyamklasic/FYP-IS-Biomarkers/main/Feature%20Selection%20LOOCV%20training%20folds.png" alt="Feature Importance" onclick="openLightbox(this)" onerror="this.style.display='none'">
+        <div class="fig-tap-hint">🔍 Tap to expand</div>
       </div>
     </div>
 
@@ -285,11 +311,36 @@
       <p>Supervisor: Prof. Shao Huilin · Mentor: Tan Hong Min · AY 2025/2026</p>
       <p style="margin-top:12px">
         <a href="https://github.com/thyamklasic/FYP-IS-Biomarkers/blob/main/A0253027M_FYP.pdf" target="_blank">Download Full Thesis</a>
-        &nbsp;·&nbsp;
-        <a href="https://github.com/thyamklasic/FYP-IS-Biomarkers" target="_blank">GitHub Repository</a>
       </p>
     </div>
   </footer>
+
+  <script>
+    function openLightbox(img) {
+      const overlay = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const caption = document.getElementById('lightbox-caption');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      caption.textContent = img.closest('.fig-block').querySelector('.fig-title').textContent;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Prevent closing when clicking image itself
+    document.getElementById('lightbox-img').addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  </script>
 
 </body>
 </html>
